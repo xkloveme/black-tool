@@ -1,6 +1,6 @@
 'use strict'
 
-exports = module.exports = function patcher (DICT) {
+export let patcher = function (DICT) {
   // Update EXCEPTIONS dict.
   DICT.EXCEPTIONS = {
     '\u55f2': 'DIA', // DIE 嗲
@@ -38,7 +38,7 @@ exports = module.exports = function patcher (DICT) {
   DICT.UNIHANS[330] = '\u5078' // TOU: 偷 --> 偸
 }
 
-exports.shouldPatch = function shouldPatch (toToken) {
+export let shouldPatch = function (toToken) {
   if (typeof toToken !== 'function') return false
   // Special unihans that get incorrect pinyins.
   if (

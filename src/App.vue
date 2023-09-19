@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <h1 style="text-align: center;">黑科技表格转化</h1>
+    <h1 style="text-align: center;font-size: 30px;">黑科技工具</h1>
+    
+    <h2 style="color: aquamarine;">浙里办跳转</h2>
+    <Qrcode/>
+    <h2 style="color: aquamarine;">表格转化</h2>
     <Change></Change>
      <footer class="footer">
       Copyright © 冀小康 2020 by
@@ -20,15 +24,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import Qrcode from './components/Qrcode.vue'
 import Change from './components/ChangeData.vue'
-
-export default {
-  name: 'App',
-  components: {
-    Change,
-  },
-}
 </script>
 
 <style>

@@ -179,8 +179,7 @@ const EXCEPTIONS = {
   '\u828e': 'XIONG',
   '\u8c01': 'SHUI'
 }
-
-module.exports = {
+export default {
   PINYINS,
   UNIHANS,
   EXCEPTIONS

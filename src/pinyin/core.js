@@ -1,6 +1,7 @@
 'use strict'
 
-const DICT = require('./dict')
+import DICT from './dict'
+// const DICT = require('./dict')
 
 const FIRST_PINYIN_UNIHAN = '\u963F'
 const LAST_PINYIN_UNIHAN = '\u9FFF'
@@ -127,7 +128,7 @@ function parse (str) {
   return str.split('').map(v => genToken(v))
 }
 
-module.exports = {
+export default {
   isSupported,
   parse,
   patchDict,
