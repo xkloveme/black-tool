@@ -2,9 +2,9 @@
   <div id="app">
     <h1 style="text-align: center;font-size: 30px;">黑科技工具</h1>
     
-    <h2 style="color: aquamarine;">浙里办跳转</h2>
+    <h2 style="color: aquamarine;margin: 10px 0;">浙里办跳转</h2>
     <Qrcode/>
-    <h2 style="color: aquamarine;">表格转化</h2>
+    <h2 style="color: aquamarine;margin: 10px 0;">表格转化</h2>
     <Change></Change>
      <footer class="footer">
       Copyright © 冀小康 2020 by

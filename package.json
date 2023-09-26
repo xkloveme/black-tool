@@ -13,7 +13,11 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@unocss/reset": "^0.56.4",
     "@vitejs/plugin-vue": "^4.3.4",
+    "daisyui": "^3.8.0",
+    "unocss": "^0.56.4",
+    "unocss-preset-daisy": "^6.0.1",
     "vite": "^4.4.9"
   }
 }
