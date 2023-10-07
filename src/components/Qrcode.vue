@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2023-10-07 14:15:16
+ * @LastEditTime: 2023-10-07 14:16:48
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -12,9 +12,9 @@
       <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center">
         <textarea v-model="qr" class="textarea textarea-info w-full h-full" cols="33" rows="5" placeholder="请输入链接"></textarea>
       </div>
-      <div class="divider divider-horizontal">生成</div>
+      <div class="divider divider-horizontal"> -> </div>
       <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center"><qrcode-vue :value="newQr"
-          :size="200" level="H" /></div>
+          :size="400" level="H" /></div>
     </div>
   </div>
 </template>
