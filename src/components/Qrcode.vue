@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2023-09-19 16:25:11
+ * @LastEditTime: 2023-10-07 14:15:16
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -23,7 +23,7 @@
 import { ref, computed } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 let qr = ref('')
-let newQr = computed(() => `https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/index.html?debug=true#/pages/test/index?url=${qr.value}`)
+let newQr = computed(() => `https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/index.html?debug=true#/pages/test/index?url=${encodeURIComponent(qr.value)}`)
 </script>
 
 <style scoped lang="scss"></style>
