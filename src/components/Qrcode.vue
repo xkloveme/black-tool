@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2023-10-07 14:16:48
+ * @LastEditTime: 2023-11-08 10:36:25
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -23,7 +23,9 @@
 import { ref, computed } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 let qr = ref('')
-let newQr = computed(() => `https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/index.html?debug=true#/pages/test/index?url=${encodeURIComponent(qr.value)}`)
+// https://yyfbxt.szhz.hangzhou.gov.cn:8068/web/mgop/gov-open/zj/2002207948/reserved/jump.html?
+// https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/jump.html?debug=true#/?
+let newQr = computed(() => `https://yyfbxt.szhz.hangzhou.gov.cn:8068/web/mgop/gov-open/zj/2002207948/reserved/jump.html?url=${encodeURIComponent(qr.value)}`)
 </script>
 
 <style scoped lang="scss"></style>
