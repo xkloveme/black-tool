@@ -1,32 +1,18 @@
 <template>
   <div id="app">
-    <h1 style="text-align: center;font-size: 30px;">黑科技工具</h1>
-    
-    <h2 style="color: aquamarine;margin: 10px 0;">浙里办跳转</h2>
+    <Header/>
+    <!-- <h2 style="color: aquamarine;margin: 10px 0;">浙里办跳转</h2>
     <Qrcode/>
     <h2 style="color: aquamarine;margin: 10px 0;">表格转化</h2>
-    <Change></Change>
-     <footer class="footer">
-      Copyright © 冀小康 2020 by
-      <a href="https://github.com/xkloveme/black-tool" target="_blank"
-        >xkloveme</a
-      >
-      <iframe
-        style="margin-left: 2px; margin-bottom:-5px;"
-        frameborder="0"
-        scrolling="0"
-        width="91px"
-        height="20px"
-        src="https://ghbtns.com/github-btn.html?user=xkloveme&repo=black-tool&type=star&count=true"
-      >
-      </iframe>
-    </footer>
+    <Change></Change> -->
+    <router-view></router-view>
+    <Footer/>
   </div>
 </template>
 
 <script setup>
-import Qrcode from './components/Qrcode.vue'
-import Change from './components/ChangeData.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <style>
