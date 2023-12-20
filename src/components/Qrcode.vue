@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2023-12-20 16:37:21
+ * @LastEditTime: 2023-12-20 16:57:46
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -14,7 +14,7 @@
           placeholder="请输入链接" ref="refInput"></textarea>
       </div>
       <div class="divider divider-horizontal"> -> </div>
-      <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center">
+      <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center bg-black">
         <div class="flex">
           <button @click="openAddLink" class="btn btn-outline btn-secondary mr-4 w-50">保存链接</button>
           <button onclick="my_modal_4.showModal()" class="btn btn-outline btn-accent w-50">查看列表</button>
@@ -24,22 +24,22 @@
     </div>
 
 
-    <dialog id="my_modal_3" class="modal">
-      <div class="modal-box w-11/12 max-w-5xl">
+    <dialog id="my_modal_3" class="modal ">
+      <div class="modal-box w-11/12 max-w-5xl bg-gray-700">
         <h3 class="font-bold text-lg">保存链接到配置</h3>
         <div class="w-full">
           <label class="label">
             <span class="label-text">链接标题</span>
           </label>
           <input type="text" @change="handlChangeData" v-model="linkConfig.title" placeholder="标题"
-            class="input input-bordered w-full" />
+            class="input input-bordered w-full bg-gray-600" />
         </div>
         <div class="w-full">
           <label class="label">
             <span class="label-text">链接地址</span>
           </label>
           <input type="text" @change="handlChangeData" v-model="linkConfig.url" placeholder="链接地址"
-            class="input input-bordered w-full text-emerald" />
+            class="input input-bordered w-full text-emerald bg-gray-600" />
         </div>
         <!-- <iframe ref="iframe" :src="iframeUrl" frameborder="0"></iframe> -->
         <div class="modal-action">
@@ -52,7 +52,7 @@
     </dialog>
 
     <dialog id="my_modal_4" class="modal">
-      <div class="modal-box  max-w-5xl">
+      <div class="modal-box  max-w-5xl bg-gray-900">
         <div>
           <table class="table w-full table-zebra">
             <!-- head -->

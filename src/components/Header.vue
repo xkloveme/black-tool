@@ -1,13 +1,13 @@
 <!--
  * @Date: 2023-12-20
- * @LastEditTime: 2023-12-20 13:33:20
+ * @LastEditTime: 2023-12-20 16:55:17
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Header.vue
  * @Copyright © xkloveme
 -->
 <template>
-<div class="navbar bg-base-100">
+<div class="navbar bg-black">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">

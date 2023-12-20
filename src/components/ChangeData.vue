@@ -1,6 +1,6 @@
 <template>
   <div class="changeData">
-    <textarea class="textarea textarea-secondary" placeholder="请输入表头" cols="63" rows="5" v-model="msg"></textarea>
+    <textarea class="textarea textarea-secondary text-emerald bg-black" placeholder="请输入表头" cols="63" rows="5" v-model="msg"></textarea>
     <div @click="handlChangeData" class="tooltip" data-tip="狠狠点击我转化为表头数据" style="cursor: pointer;margin:30px">
       <svg class="icon" height="200" p-id="7940" t="1600052679408" version="1.1" viewBox="0 0 1024 1024" width="200"
         xmlns="http://www.w3.org/2000/svg">
