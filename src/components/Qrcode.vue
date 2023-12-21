@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2023-12-20 17:47:57
+ * @LastEditTime: 2023-12-21 09:07:55
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -57,7 +57,7 @@
           <table class="table w-full table-zebra">
             <!-- head -->
             <thead>
-              <tr class="bg-base-100 text-emerald my-2">
+              <tr class="bg-gray-900 text-emerald my-2">
                 <th align="center">操作</th>
                 <th align="left">标题和链接</th>
               </tr>
@@ -74,9 +74,9 @@
                   </form>
                 </th>
                 <td class="w-5/6 overflow-hidden">
-                  <button className="btn btn-active btn-link text-blue lowercase text-left">{{ item.url }}</button>
+                  <a :href="item.url" target="_blank" className="btn btn-active btn-link text-blue lowercase text-left">{{ item.url }}</a>
                   <br />
-                  <span class="badge badge-ghost badge-sm text-emerald">{{ item.title }}</span>
+                  <span class="badge badge-ghost badge-lg text-red text-left text-lg p-2">{{ item.title }}</span>
                 </td>
               
               </tr>
