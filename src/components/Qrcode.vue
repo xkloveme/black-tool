@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2023-12-22 10:30:06
+ * @LastEditTime: 2023-12-22 14:26:56
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -110,7 +110,7 @@ let qr = ref('')
 // 临安一网监督
 // let newQr = computed(() => `https://yyfbxt.szhz.hangzhou.gov.cn:8068/web/mgop/gov-open/zj/2002207948/reserved/jump.html?url=${encodeURIComponent(qr.value)}`)
 // 嘉善一网监督
-let newQr = computed(() => `https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/jump.html?url=${encodeURIComponent(qr.value)}`)
+let newQr = computed(() => `https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/jump.html?debug=true#/?url=${encodeURIComponent(qr.value)}`)
 let linkConfig = ref({
   title: '',
   url: ''
