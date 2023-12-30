@@ -1,6 +1,6 @@
 # 小康黑科技
 
-- [www.jixiaokang.com/black-tool](www.jixiaokang.com/black-tool)
+- [https://www.jixiaokang.com/black-tool/#/qrcode](https://www.jixiaokang.com/black-tool/#/qrcode)
 
 ![Alt text](image.png)
 
