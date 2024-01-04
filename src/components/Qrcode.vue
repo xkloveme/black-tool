@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2024-01-04 14:04:36
+ * @LastEditTime: 2024-01-04 16:06:58
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -8,16 +8,13 @@
 -->
 <template>
   <div class="main p-4">
-    <div role="alert" class="alert shadow-lg">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      </svg>
-      <div>
-        <h3 class="font-bold text-red text-lg">浙里办调试单点登录!</h3>
+    <div role="alert" class="alert shadow-lg bg-gray-700">
+      <svg xmlns="http://www.w3.org/2000/svg" class="ext-emerald stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <div class="w-full text-center">
+        <h1 class="font-bold text-blue text-lg text-center">浙里办二维码调试单点登录工具</h1>
         <div class="text-xs">1.调试应用（包含本地应用）链接填入后,<span class="text-blue text-blod">直接使用浙里办APP扫码使用</span><br>
 2.应用绕过了浙里办不安全域名，可以调试任何链接<br>
-3.也可以调试本地应用，兼容单点登录，自动带入ticketId</div>
+3.兼容单点登录，自动带入ticketId</div>
       </div>
     </div>
     <div class="flex w-full flex-wrap mt-4">
