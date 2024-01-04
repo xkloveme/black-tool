@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2024-01-04 13:56:28
+ * @LastEditTime: 2024-01-04 14:04:36
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -31,7 +31,7 @@
           <button @click="openAddLink" class="btn btn-outline btn-secondary mr-4 w-40">保存链接</button>
           <button onclick="my_modal_4.showModal()" class="btn btn-outline btn-accent w-40">查看列表</button>
         </div>
-        <qrcode-vue :value="newQr" :size="400" level="H" />
+        <qrcode-vue :value="newQr" :size="360" level="H" />
       </div>
     </div>
 
