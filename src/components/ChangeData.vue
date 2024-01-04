@@ -1,6 +1,6 @@
 <template>
-  <div class="changeData">
-    <textarea class="textarea textarea-secondary text-emerald bg-black" placeholder="请输入表头" cols="63" rows="5" v-model="msg"></textarea>
+  <div class="changeData p-4">
+    <textarea class="textarea textarea-success text-emerald bg-black" placeholder="请输入表头" cols="63" rows="5" v-model="msg"></textarea>
     <div @click="handlChangeData" class="tooltip" data-tip="狠狠点击我转化为表头数据" style="cursor: pointer;margin:30px">
       <svg class="icon" height="200" p-id="7940" t="1600052679408" version="1.1" viewBox="0 0 1024 1024" width="200"
         xmlns="http://www.w3.org/2000/svg">
@@ -16,17 +16,17 @@
           fill="#d81e06" p-id="7941" />
       </svg>
     </div>
-    <div class="res">
+    <div class="res p-2">
       <!-- <div class="copy" v-copy="res">复制</div> -->
       <div class="flex">
         <button @click="handlChangeData" class="btn btn-outline btn-secondary">点击转化</button>
-        <div class="tooltip" :data-tip="clickMsg">
+        <div class="tooltip  mx-4" :data-tip="clickMsg">
           <button @click="copyText(res)" class="btn btn-wide glass btn-outline w-full">复制</button>
         </div>
         <button onclick="my_modal_4.showModal()" class="btn btn-outline btn-accent">配置</button>
       </div>
 
-      <div class="mockup-code">
+      <div class="mockup-code my-2">
         <pre v-html="res" class="text-success"></pre>
       </div>
     </div>
@@ -134,13 +134,6 @@ export default {
   display: flex;
   justify-content: space-between;
   min-height: 500px;
-}
-
-.textarea {
-  border: 0;
-  border-radius: 5px;
-  color: #000;
-  background-color: rgba(241, 241, 241, 0.98);
 }
 
 .icon {

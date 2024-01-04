@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2023-12-22 14:56:31
+ * @LastEditTime: 2024-01-04 13:56:28
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -8,7 +8,19 @@
 -->
 <template>
   <div class="main p-4">
-    <div class="flex w-full flex-wrap">
+    <div role="alert" class="alert shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <div>
+        <h3 class="font-bold text-red text-lg">浙里办调试单点登录!</h3>
+        <div class="text-xs">1.调试应用（包含本地应用）链接填入后,<span class="text-blue text-blod">直接使用浙里办APP扫码使用</span><br>
+2.应用绕过了浙里办不安全域名，可以调试任何链接<br>
+3.也可以调试本地应用，兼容单点登录，自动带入ticketId</div>
+      </div>
+    </div>
+    <div class="flex w-full flex-wrap mt-4">
       <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center">
         <textarea v-model="qr" class="textarea textarea-info w-full h-full text-emerald bg-black" cols="33" rows="5"
           placeholder="请输入链接" ref="refInput"></textarea>
@@ -74,11 +86,12 @@
                   </form>
                 </th>
                 <td class="w-5/6 overflow-hidden">
-                  <a :href="item.url" target="_blank" className="btn btn-active btn-link text-blue lowercase text-left">{{ item.url }}</a>
+                  <a :href="item.url" target="_blank" className="btn btn-active btn-link text-blue lowercase text-left">{{
+                    item.url }}</a>
                   <br />
                   <span class="badge badge-ghost badge-lg text-red text-left text-lg p-2">{{ item.title }}</span>
                 </td>
-              
+
               </tr>
 
             </tbody>
