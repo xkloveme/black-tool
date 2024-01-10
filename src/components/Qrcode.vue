@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2024-01-04 16:06:58
+ * @LastEditTime: 2024-01-10 17:54:27
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -9,13 +9,21 @@
 <template>
   <div class="main p-4">
     <div role="alert" class="alert shadow-lg bg-gray-700">
-      <svg xmlns="http://www.w3.org/2000/svg" class="ext-emerald stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="ext-emerald stroke-current shrink-0 h-6 w-6" fill="none"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
       <div class="w-full text-center">
         <h1 class="font-bold text-blue text-lg text-center">浙里办二维码调试单点登录工具</h1>
         <div class="text-xs">1.调试应用（包含本地应用）链接填入后,<span class="text-blue text-blod">直接使用浙里办APP扫码使用</span><br>
-2.应用绕过了浙里办不安全域名，可以调试任何链接<br>
-3.兼容单点登录，自动带入ticketId</div>
+          2.应用绕过了浙里办不安全域名，可以调试任何链接<br>
+          3.兼容单点登录，自动带入ticketId</div>
       </div>
+      <select v-model="appid" class="select select-warning w-full max-w-xs">
+        <option disabled selected>选择应用</option>
+        <option v-for="(item,key) of objList" :value="key">{{item}}</option>
+      </select>
     </div>
     <div class="flex w-full flex-wrap mt-4">
       <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center">
@@ -114,13 +122,14 @@ import QrcodeVue from 'qrcode.vue'
 import { userStore } from '../store/user'
 const { urlList } = storeToRefs(userStore())
 console.log("===🐛=== ~ file: Qrcode.vue:112 ~ store:", urlList);
+let appid = ref('2002389987')
 let qr = ref('')
 // https://yyfbxt.szhz.hangzhou.gov.cn:8068/web/mgop/gov-open/zj/2002207948/reserved/jump.html?
 // https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/jump.html?debug=true#/?
 // 临安一网监督
 // let newQr = computed(() => `https://yyfbxt.szhz.hangzhou.gov.cn:8068/web/mgop/gov-open/zj/2002207948/reserved/jump.html?url=${encodeURIComponent(qr.value)}`)
 // 嘉善一网监督
-let newQr = computed(() => `https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/jump.html?url=${encodeURIComponent(qr.value)}`)
+let newQr = computed(() => `https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/${appid.value}/lastTest/jump.html?url=${encodeURIComponent(qr.value)}`)
 let linkConfig = ref({
   title: '',
   url: ''
@@ -172,6 +181,24 @@ const getFocus = () => {
   })
 }
 getFocus()
+
+let objList = ref({})
+function getApp () {
+  fetch('https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002389987/lastTest/config.json').then(res => res.text()).then(data => {
+    let arr = data.trim().split('\n')
+    let obj = {}
+    for (let i = 0; i < arr.length; i++) {
+      let v = arr[i]
+      if (v.includes('//') && v.match(/[\u4e00-\u9fa5（）()]+/g)) {
+        let key = arr[i + 1].match(/"(.*?)":/)[1]
+        obj[key] = v.match(/[\u4e00-\u9fa5（）()]+/g)?.join('')
+      }
+    }
+    objList.value = obj
+    console.log("===🐛=== ~ fetch ~ data:", obj);
+  })
+}
+getApp()
 
 </script>
 
