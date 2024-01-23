@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2024-01-10 17:54:27
+ * @LastEditTime: 2024-01-23 11:23:15
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -184,7 +184,7 @@ getFocus()
 
 let objList = ref({})
 function getApp () {
-  fetch('https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002389987/lastTest/config.json').then(res => res.text()).then(data => {
+  fetch('https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2001895658/lastTest/config.json').then(res => res.text()).then(data => {
     let arr = data.trim().split('\n')
     let obj = {}
     for (let i = 0; i < arr.length; i++) {
