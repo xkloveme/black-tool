@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2024-01-23 11:23:15
+ * @LastEditTime: 2024-01-30 11:42:39
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -29,14 +29,17 @@
       <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center">
         <textarea v-model="qr" class="textarea textarea-info w-full h-full text-emerald bg-black" cols="33" rows="5"
           placeholder="请输入链接" ref="refInput"></textarea>
+          <button  class="btn text-blue mt-2">当前URL链接:</button>
+          <qrcode-vue :value="qr" :size="360" level="H" class="my-4"/>
       </div>
       <div class="divider divider-horizontal"> -> </div>
       <div class="grid h-150 flex-grow card bg-base-300 rounded-box place-items-center bg-black">
+        <qrcode-vue :value="newQr" :size="360" level="H" />
         <div class="flex">
           <button @click="openAddLink" class="btn btn-outline btn-secondary mr-4 w-40">保存链接</button>
           <button onclick="my_modal_4.showModal()" class="btn btn-outline btn-accent w-40">查看列表</button>
         </div>
-        <qrcode-vue :value="newQr" :size="360" level="H" />
+       
       </div>
     </div>
 
