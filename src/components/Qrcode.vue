@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime: 2024-01-30 11:42:39
+ * @LastEditTime: 2024-03-29 10:55:38
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Qrcode.vue
@@ -22,7 +22,7 @@
       </div>
       <select v-model="appid" class="select select-warning w-full max-w-xs">
         <option disabled selected>选择应用</option>
-        <option v-for="(item,key) of objList" :value="key">{{item}}</option>
+        <option v-for="(item,key) in config" :value="item.key">{{item.name}}</option>
       </select>
     </div>
     <div class="flex w-full flex-wrap mt-4">
@@ -123,9 +123,10 @@ import { storeToRefs } from 'pinia'
 import { ref, computed, nextTick } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 import { userStore } from '../store/user'
+import config from '../../public/config.json'
 const { urlList } = storeToRefs(userStore())
 console.log("===🐛=== ~ file: Qrcode.vue:112 ~ store:", urlList);
-let appid = ref('2002389987')
+let appid = ref('2002271810')
 let qr = ref('')
 // https://yyfbxt.szhz.hangzhou.gov.cn:8068/web/mgop/gov-open/zj/2002207948/reserved/jump.html?
 // https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2002271810/lastTest/jump.html?debug=true#/?
@@ -185,23 +186,34 @@ const getFocus = () => {
 }
 getFocus()
 
-let objList = ref({})
 function getApp () {
-  fetch('https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2001895658/lastTest/config.json').then(res => res.text()).then(data => {
-    let arr = data.trim().split('\n')
-    let obj = {}
-    for (let i = 0; i < arr.length; i++) {
-      let v = arr[i]
-      if (v.includes('//') && v.match(/[\u4e00-\u9fa5（）()]+/g)) {
-        let key = arr[i + 1].match(/"(.*?)":/)[1]
-        obj[key] = v.match(/[\u4e00-\u9fa5（）()]+/g)?.join('')
-      }
-    }
-    objList.value = obj
-    console.log("===🐛=== ~ fetch ~ data:", obj);
-  })
+  console.log(config,111)
+    //   let arr = config.trim().split('\n')
+    // let obj = {}
+    // for (let i = 0; i < arr.length; i++) {
+    //   let v = arr[i]
+    //   if (v.includes('//') && v.match(/[\u4e00-\u9fa5（）()]+/g)) {
+    //     let key = arr[i + 1].match(/"(.*?)":/)[1]
+    //     obj[key] = v.match(/[\u4e00-\u9fa5（）()]+/g)?.join('')
+    //   }
+    // }
+    // objList.value = obj
+    // console.log("===🐛=== ~ fetch ~ data:", obj);
+  // fetch('https://mapi.zjzwfw.gov.cn/web/mgop/gov-open/zj/2001895658/lastTest/config.json').then(res => res.text()).then(data => {
+  //   let arr = data.trim().split('\n')
+  //   let obj = {}
+  //   for (let i = 0; i < arr.length; i++) {
+  //     let v = arr[i]
+  //     if (v.includes('//') && v.match(/[\u4e00-\u9fa5（）()]+/g)) {
+  //       let key = arr[i + 1].match(/"(.*?)":/)[1]
+  //       obj[key] = v.match(/[\u4e00-\u9fa5（）()]+/g)?.join('')
+  //     }
+  //   }
+  //   objList.value = obj
+  //   console.log("===🐛=== ~ fetch ~ data:", obj);
+  // })
 }
-getApp()
+// getApp()
 
 </script>
 
