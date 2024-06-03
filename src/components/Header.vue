@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-12-20
- * @LastEditTime: 2023-12-21 09:08:16
+ * @LastEditTime: 2024-06-03 10:20:38
  * @LastEditors: xkloveme
  * @FileDesc:new page
  * @FilePath: /black-tool/src/components/Header.vue
@@ -41,6 +41,9 @@ let menu = [{
 }, {
   name: "表格",
   url: "/table"
+}, {
+  name: "devtools",
+  url: "/devtools"
 }]
 onMounted(() => {});
 </script>
