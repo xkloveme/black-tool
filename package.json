@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "gm-crypto": "^0.1.12",
-    "pinia": "^2.1.7",
+    "pinia": "2.1.0",
     "pinia-plugin-persist": "^1.0.0",
     "qrcode.vue": "^3.4.1",
     "vue": "^3.3.13",
