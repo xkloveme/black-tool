@@ -23,8 +23,8 @@ export const userStore = defineStore("user", {
   persist: {
     enabled: true,
     //指定字段存储，并且指定存储方式：
-    strategies: [
-      { storage: localStorage }, // accessToken字段用 localstorage存储
-    ],
+    // strategies: [
+    //   { storage: localStorage }, // accessToken字段用 localstorage存储
+    // ],
   },
 });
