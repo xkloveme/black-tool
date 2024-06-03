@@ -24,7 +24,7 @@
         <div class="tooltip  mx-4" :data-tip="clickMsg">
           <button @click="copyText(res)" class="btn btn-wide glass btn-outline w-full">复制</button>
         </div>
-        <button onclick="my_modal_4.showModal()" class="btn btn-outline btn-accent">配置</button>
+        <button onclick="my_modal_4.showModal()" class="btn btn-outline btn-accent">密钥</button>
       </div>
 
       <div class="mockup-code my-2">
@@ -53,63 +53,50 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { storeToRefs } from 'pinia'
 import { decrypt } from '../utils'
 import { userStore } from '../store/user'
+import { computed, ref } from 'vue';
 
-export default {
-  name: 'changeData',
-  data () {
-    return {
-      msg: ``,
-      clickMsg: '点击复制',
-      res: null,
-    }
+let msg = ref(``)
+let clickMsg = ref(`点击复制`)
+let res = ref(``)
+const { SM4Key, addKey } = userStore()
+// let key = computed(() => SM4Key)
+const key = computed({
+  get () {
+    return SM4Key
   },
-  computed: {
-    // key getter setter 方法
-    key: {
-      get () {
-        const { SM4Key } = userStore()
-        return SM4Key
-      },
-      set (value) {
-        const store = userStore()
-        store.addKey(value)
-      }
-    }
-  },
-  methods: {
-    copyText (text) {
-      var textareaC = document.createElement('textarea');
-      textareaC.setAttribute('readonly', 'readonly'); //设置只读属性防止手机上弹出软键盘
-      textareaC.value = text;
-      document.body.appendChild(textareaC); //将textarea添加为body子元素
-      textareaC.select();
-      var res = document.execCommand('copy');
-      document.body.removeChild(textareaC);//移除DOM元素
-      this.clickMsg = '复制成功'
-      return res;
-    },
-    handlChangeData () {
-      this.clickMsg = '点击复制'
-      // if (this.msg.indexOf(',') > -1) {
-      //   this.res = JSON.stringify(this.formatting(','), null, '\t')
-      // } else if (this.msg.indexOf('，') > -1) {
-      //   this.res = JSON.stringify(this.formatting('，'), null, '\t')
-      // } else {
-      //   this.res = JSON.stringify(this.formatting(/[\s\n]/), null, '\t')
-      // }
-      try {
-        this.res = decrypt(this.msg.replace(/['"]/g, ''))
-      } catch (error) {
-        this.res = {}
-      }
-    },
-    formatting (str) {
-      return decrypt(str.replace(/['"]/g, ''))
-    },
-  },
+  set (val) {
+    addKey(val)
+  }
+})
+function copyText (text) {
+  var textareaC = document.createElement('textarea');
+  textareaC.setAttribute('readonly', 'readonly'); //设置只读属性防止手机上弹出软键盘
+  textareaC.value = JSON.stringify(text);
+  document.body.appendChild(textareaC); //将textarea添加为body子元素
+  textareaC.select();
+  var res = document.execCommand('copy');
+  document.body.removeChild(textareaC);//移除DOM元素
+  clickMsg.value = '复制成功'
+  return res;
+}
+function handlChangeData () {
+  clickMsg.value = '点击复制'
+  // if (this.msg.indexOf(',') > -1) {
+  //   this.res = JSON.stringify(this.formatting(','), null, '\t')
+  // } else if (this.msg.indexOf('，') > -1) {
+  //   this.res = JSON.stringify(this.formatting('，'), null, '\t')
+  // } else {
+  //   this.res = JSON.stringify(this.formatting(/[\s\n]/), null, '\t')
+  // }
+  try {
+    res.value = decrypt(msg.value.replace(/['"]/g, ''))
+  } catch (error) {
+    res.value = {}
+  }
 }
 </script>
 
