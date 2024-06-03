@@ -11,4 +11,5 @@ pinia.use(piniaPersist)
 const app = createApp(App)
 app.use(router)
 app.use(pinia)
+window.pinia = pinia
 app.mount('#app')

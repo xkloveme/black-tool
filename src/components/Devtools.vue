@@ -28,7 +28,7 @@
       </div>
 
       <div class="mockup-code my-2">
-        <pre class="text-success">{{res}}</pre>
+        <pre class="text-success">{{ res }}</pre>
       </div>
     </div>
     <dialog id="my_modal_4" class="modal">
@@ -56,7 +56,7 @@
 <script>
 import { decrypt } from '../utils'
 import { userStore } from '../store/user'
-
+import { storeToRefs } from 'pinia'
 
 export default {
   name: 'changeData',
@@ -71,11 +71,11 @@ export default {
     // key getter setter 方法
     key: {
       get () {
-        const store = userStore()
-        return store.SM4Key
+        const { SM4Key } = userStore(window.pinia)
+        return SM4Key
       },
       set (value) {
-        const store = userStore()
+        const store = userStore(window.pinia)
         store.addKey(value)
       }
     }
