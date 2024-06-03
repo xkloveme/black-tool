@@ -56,7 +56,6 @@
 <script>
 import { decrypt } from '../utils'
 import { userStore } from '../store/user'
-import { storeToRefs } from 'pinia'
 
 export default {
   name: 'changeData',
@@ -71,11 +70,11 @@ export default {
     // key getter setter 方法
     key: {
       get () {
-        const { SM4Key } = userStore(window.pinia)
+        const { SM4Key } = userStore()
         return SM4Key
       },
       set (value) {
-        const store = userStore(window.pinia)
+        const store = userStore()
         store.addKey(value)
       }
     }

@@ -20,10 +20,10 @@ export const router = createRouter({
       name: 'table',
       component: Change,
     },
-    {
-      path: '/devtools',
-      name: 'devtools',
-      component: Devtools,
-    },
+    // {
+    //   path: '/devtools',
+    //   name: 'devtools',
+    //   component: Devtools,
+    // },
   ],
 })
