@@ -27,8 +27,7 @@
         <button onclick="my_modal_4.showModal()" class="btn btn-outline btn-accent">密钥</button>
       </div>
 
-      <div class="mockup-code my-2">
-        <pre class="text-success">{{ res }}</pre>
+      <div v-html="res" class="mockup-code my-2">
       </div>
     </div>
     <dialog id="my_modal_4" class="modal">
@@ -54,7 +53,7 @@
 </template>
 
 <script setup>
-import { storeToRefs } from 'pinia'
+import { codeToHtml } from 'shiki'
 import { decrypt } from '../utils'
 import { userStore } from '../store/user'
 import { computed, ref } from 'vue';
@@ -83,11 +82,17 @@ function copyText (text) {
   clickMsg.value = '复制成功'
   return res;
 }
-function handlChangeData () {
+async function handlChangeData () {
   clickMsg.value = '点击复制'
-  if(!msg.value) return
+  if (!msg.value) return
   try {
-    res.value = decrypt(msg.value.replace(/['"]/g, ''))
+    let code = decrypt(msg.value.replace(/['"“‘]/g, ''))
+    const html = await codeToHtml(code, {
+      lang: 'json5',
+      theme: 'min-dark'
+    })
+    console.log(html)
+    res.value = html
   } catch (error) {
     res.value = {}
   }
@@ -121,7 +126,7 @@ function handlChangeData () {
   min-height: 500px;
   flex: 1;
   min-width: 200px;
-  color: #1afa29;
+  color: #e92f0a;
   background-color: #283938;
   border-radius: 5px;
 }

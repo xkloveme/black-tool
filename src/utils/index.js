@@ -26,7 +26,7 @@ export function decrypt(encryptedData) {
     })
     console.log("===🐛=== ~ decrypt ~ decryptedData:", decryptedData);
     try {
-      return JSON.parse(decryptedData)
+      return JSON.stringify(JSON.parse(decryptedData), null, '\t')
     } catch (error) {
       return decryptedData
     }
