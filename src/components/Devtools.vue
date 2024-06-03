@@ -91,7 +91,6 @@ async function handlChangeData () {
       lang: 'json5',
       theme: 'min-dark'
     })
-    console.log(html)
     res.value = html
   } catch (error) {
     res.value = {}
