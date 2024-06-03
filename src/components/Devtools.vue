@@ -1,7 +1,7 @@
 <template>
   <div class="changeData p-4">
     <textarea class="textarea textarea-success text-emerald bg-black" style="background-color: black;"
-      placeholder="请输入加密内容,支持引号输入" cols="63" rows="5" v-model="msg"></textarea>
+      placeholder="请输入加密内容,支持引号输入" cols="63" rows="5" v-model="msg" @change="handlChangeData"></textarea>
     <div @click="handlChangeData" class="tooltip" data-tip="狠狠点击我转化" style="cursor: pointer;margin:30px">
       <svg class="icon" height="200" p-id="7940" t="1600052679408" version="1.1" viewBox="0 0 1024 1024" width="200"
         xmlns="http://www.w3.org/2000/svg">
@@ -85,13 +85,7 @@ function copyText (text) {
 }
 function handlChangeData () {
   clickMsg.value = '点击复制'
-  // if (this.msg.indexOf(',') > -1) {
-  //   this.res = JSON.stringify(this.formatting(','), null, '\t')
-  // } else if (this.msg.indexOf('，') > -1) {
-  //   this.res = JSON.stringify(this.formatting('，'), null, '\t')
-  // } else {
-  //   this.res = JSON.stringify(this.formatting(/[\s\n]/), null, '\t')
-  // }
+  if(!msg.value) return
   try {
     res.value = decrypt(msg.value.replace(/['"]/g, ''))
   } catch (error) {
