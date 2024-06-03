@@ -71,11 +71,11 @@ export default {
     // key getter setter 方法
     key: {
       get () {
-        const store = userStore()
+        const store = userStore(window.pinia)
         return store.SM4Key
       },
       set (value) {
-        const store = userStore()
+        const store = userStore(window.pinia)
         store.addKey(value)
       }
     }
