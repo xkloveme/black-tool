@@ -84,7 +84,7 @@ async function handlChangeData () {
   clickMsg.value = '点击复制'
   if (!msg.value) return
   try {
-    let code = selectedValue.value === '解密' ? decrypt(msg.value.replace(/['"“‘]/g, '')) : encrypt(msg.value.replace(/['"“‘]/g, ''))
+    let code = selectedValue.value === '解密' ? decrypt(msg.value.replace(/['"“‘]/g, '')) : encrypt(msg.value, '')
     let html = null
     if (code && (code.includes('}') || code.includes(']'))) {
       html = await codeToHtml(code, {
