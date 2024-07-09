@@ -85,7 +85,6 @@ async function handlChangeData () {
   if (!msg.value) return
   try {
     let code = selectedValue.value === '解密' ? decrypt(msg.value.replace(/['"“‘]/g, '')) : encrypt(msg.value.replace(/['"“‘]/g, ''))
-    console.log("===🐛=== ~ handlChangeData ~ code:", code);
     let html = null
     if (code && (code.includes('}') || code.includes(']'))) {
       html = await codeToHtml(code, {
