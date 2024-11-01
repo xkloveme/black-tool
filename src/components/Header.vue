@@ -1,9 +1,9 @@
 <!--
  * @Date: 2023-12-20
- * @LastEditTime: 2024-06-03 10:20:38
- * @LastEditors: xkloveme
+ * @LastEditTime:2024-10-31 18:00:43
+ * @LastEditors:xkloveme
  * @FileDesc:new page
- * @FilePath: /black-tool/src/components/Header.vue
+ * @FilePath:/black-tool/src/components/Header.vue
  * @Copyright © xkloveme
 -->
 <template>
@@ -41,7 +41,10 @@ let menu = [{
 }, {
   name: "表格",
   url: "/table"
-}, {
+},  {
+  name: "jsfuck",
+  url: "/jsfuck"
+},{
   name: "devtools",
   url: "/devtools"
 }]

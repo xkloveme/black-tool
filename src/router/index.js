@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Qrcode from '../components/Qrcode.vue'
 import Change from '../components/ChangeData.vue'
 import Devtools from '../components/Devtools.vue'
+import Jsfuck from '../components/Jsfuck.vue'
 
 export const router = createRouter({
   history: createWebHashHistory(),
@@ -14,6 +15,11 @@ export const router = createRouter({
       path: '/qrcode',
       name: 'qrcode',
       component: Qrcode,
+    },
+    {
+      path: '/jsfuck',
+      name: 'jsfuck',
+      component: Jsfuck,
     },
     {
       path: '/table',
