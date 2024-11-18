@@ -1,0 +1,59 @@
+[
+  {
+    "label": "导航",
+    "url": {
+      "inftab": "https://inftab.com/",
+      "前端": "https://wt.jixiaokang.com/link/",
+      "终极导航": "https://www.zjnav.com/sitetag/dianyingdaohang",
+      "今日热榜": "https://rebang.today/?tab=top",
+      "AIGC": "https://www.aigc.cn/"
+    }
+  },
+  {
+    "label": "工具箱",
+    "url": {
+      "开发者": "https://tool.lu/",
+      "通用": "http://www.atoolbox.net/",
+      "iodraw": "https://www.iodraw.com/diagram/",
+      "速写板": "https://www.suxieban.com/#",
+      "hello图床": "https://www.helloimg.com/upload",
+      "文件转换": "https://www.aconvert.com/cn/pdf/",
+      "网速测试": "http://test.ustc.edu.cn/",
+      "被墙测试": "https://www.kkce.com/wall/",
+      "vslite": "https://vslite.dev/"
+    }
+  },
+  {
+    "label": "icon图标库",
+    "url": {
+      "yesicon": "https://yesicon.app/",
+      "iconify": "https://icones.js.org/",
+      "iconoir": "https://iconoir.com/"
+    }
+  },
+  {
+    "label": "文档",
+    "url": {
+      "vite": "https://cn.vitejs.dev/guide/",
+      "UnoCSS": "https://unocss-cn.pages.dev/guide/",
+      "tailwindcss": "https://www.tailwindcss.cn/docs/flex",
+      "element-plus": "https://element-plus.org/zh-CN/component/overview.html",
+      "华通云前端": "https://wt.jixiaokang.com/"
+    }
+  },
+  {
+    "label": "经纬度转换",
+    "url": {
+      "高德": "https://www.piliang.tech/geocoding-amap",
+      "百度": "https://maplocation.sjfkai.com/"
+    }
+  },
+  {
+    "label": "小康黑科技",
+    "url": "https://www.jixiaokang.com/black-tool/#/qrcode/"
+  },
+  {
+    "label": "小康函数",
+    "url": "https://www.jixiaokang.com/jxk/"
+  }
+]
