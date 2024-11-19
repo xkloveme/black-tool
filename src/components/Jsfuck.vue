@@ -64,11 +64,11 @@ const saveEncodedResult = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-900 text-gray-100 p-4 font-sans">
-    <div class="max-w-4xl mx-auto bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+  <div class="min-h-screen bg-white text-gray-800 p-4 font-sans">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       <div class="p-6">
-        <h1 class="text-3xl font-bold text-center mb-4">JSFuck</h1>
-        <h2 class="text-xl text-center mb-6">JS加密</h2>
+        <h1 class="text-3xl font-bold text-center text-primary mb-4">JSFuck</h1>
+        <h2 class="text-xl text-center text-gray-600 mb-6">JS加密</h2>
 
         <div class="text-sm text-center mb-4">
           前后端开发者常用工具
@@ -96,18 +96,27 @@ const saveEncodedResult = () => {
 
         <div class="mb-4">
           <button @click="activeTab = 'input'"
-            :class="['px-4 py-2 rounded-t-lg transition-colors', activeTab === 'input' ? 'bg-gray-700 text-white' : 'bg-gray-600 text-gray-300']">
+            :class="['px-4 py-2 rounded-t-lg transition-colors', 
+              activeTab === 'input' 
+                ? 'bg-primary text-white' 
+                : 'bg-gray-100 text-gray-600']">
             JS源代码
           </button>
           <button @click="activeTab = 'output'"
-            :class="['px-4 py-2 rounded-t-lg transition-colors', activeTab === 'output' ? 'bg-gray-700 text-white' : 'bg-gray-600 text-gray-300']">
+            :class="['px-4 py-2 rounded-t-lg transition-colors', 
+              activeTab === 'output' 
+                ? 'bg-primary text-white' 
+                : 'bg-gray-100 text-gray-600']">
             JSFuck JS加密结果
           </button>
         </div>
 
-        <div class="bg-gray-700 p-4 rounded-lg">
-          <textarea v-if="activeTab === 'input'" v-model="inputCode" placeholder="请输入要加密的JS代码..."
-            class="w-full h-40 bg-gray-800 text-gray-100 p-2 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <div class="bg-white border rounded-lg p-4">
+          <textarea v-if="activeTab === 'input'" 
+            v-model="inputCode" 
+            placeholder="请输入要加密的JS代码..."
+            class="w-full h-40 border rounded p-2 text-gray-700 focus:border-primary focus:ring-1 focus:ring-primary">
+          </textarea>
           <div class="relative" v-else>
             <textarea v-model="outputCode" placeholder="JSFuck加密结果将显示在这里..."
               class="w-full h-40 bg-gray-800 text-gray-100 p-2 rounded resize-none focus:outline-none"

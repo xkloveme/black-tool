@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="min-h-screen flex flex-col">
     <Header/>
-    <!-- <h2 style="color: aquamarine;margin: 10px 0;">浙里办跳转</h2>
-    <Qrcode/>
-    <h2 style="color: aquamarine;margin: 10px 0;">表格转化</h2>
-    <Change></Change> -->
-    <router-view></router-view>
+    <main class="flex-grow p-4">
+      <router-view></router-view>
+    </main>
     <Footer/>
   </div>
 </template>
@@ -17,23 +15,31 @@ import Footer from './components/Footer.vue'
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #fff;
-  background-color: #2c3e50;
+  color: var(--text-primary);
+  background-color: var(--background-gray);
   width: 100%;
-  height: 100%;
   min-height: 100vh;
 }
+
 .footer {
   text-align: center;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  bottom: 5px;
-  left: 5px;
-  right: 5px;
+  color: var(--text-secondary);
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .footer {
+    position: relative;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
 }
 </style>

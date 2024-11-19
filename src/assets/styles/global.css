@@ -1,0 +1,76 @@
+:root {
+  /* 主题色 */
+  --primary-color: #1890ff;
+  --success-color: #52c41a;
+  --warning-color: #faad14;
+  --error-color: #f5222d;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  --background-color: #ffffff;
+  --background-gray: #f5f5f5;
+  --border-color: #e8e8e8;
+  
+  /* 阴影 */
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --box-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+  
+  /* 圆角 */
+  --border-radius: 4px;
+  --border-radius-lg: 8px;
+  
+  /* 间距 */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+body {
+  background-color: var(--background-gray);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+/* 链接样式 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--primary-color) 80%, white);
+}
+
+/* 按钮样式 */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.button:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 80%, white);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* 容器样式 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+} 
