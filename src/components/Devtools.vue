@@ -24,6 +24,25 @@
       <div v-html="res" class="bg-gray-50 p-4 rounded-md text-gray-700 break-words">
       </div>
     </div>
+    <dialog id="my_modal_4" class="modal">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-lg">加密配置</h3>
+        <div class="w-full">
+          <label class="label">
+            <span class="label-text">密钥key</span>
+          </label>
+          <input type="text" @change="handlChangeData" v-model="key" placeholder="密钥key"
+            class="input input-bordered w-full " />
+        </div>
+
+        <div class="modal-action">
+          <form method="dialog">
+
+            <button class="btn">关闭</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
   </div>
 </template>
 <script setup>

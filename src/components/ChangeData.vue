@@ -32,6 +32,30 @@
         <pre v-html="res"></pre>
       </div>
     </div>
+
+    <dialog id="my_modal_4" class="modal">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-lg">表格生成配置</h3>
+        <div class="w-full">
+          <label class="label">
+            <span class="label-text">生成标题key(默认title)</span>
+          </label>
+          <input type="text" @change="handlChangeData" v-model="title" placeholder="title" class="input input-bordered w-full " />
+        </div>
+        <div class="w-full">
+          <label class="label">
+            <span class="label-text">生成数据key(默认dataIndex)</span>
+          </label>
+          <input type="text" @change="handlChangeData" v-model="dataIndex" placeholder="dataIndex" class="input input-bordered w-full max-w-xs" />
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+
+            <button class="btn">关闭</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
   </div>
 </template>
 

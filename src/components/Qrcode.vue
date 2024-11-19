@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime:2024-11-19 10:26:51
+ * @LastEditTime:2024-11-19 10:36:17
  * @LastEditors:xkloveme
  * @FileDesc:new page
  * @FilePath:/black-tool/src/components/Qrcode.vue
@@ -52,18 +52,74 @@
     </div>
 
     <!-- 弹窗部分样式修改 -->
-    <dialog id="my_modal_3" class="modal">
-      <div class="modal-box w-11/12 max-w-5xl bg-white">
-        <h3 class="font-bold text-lg text-gray-800">保存链接到配置</h3>
-        <div class="form-control w-full">
+    <dialog id="my_modal_3" class="modal ">
+      <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-lg">保存链接到配置</h3>
+        <div class="w-full">
           <label class="label">
-            <span class="label-text text-gray-700">链接标题</span>
+            <span class="label-text">链接标题</span>
           </label>
-          <input type="text" v-model="linkConfig.title" 
-            class="input input-bordered w-full bg-white text-gray-700" 
-            placeholder="标题" />
+          <input type="text" @change="handlChangeData" v-model="linkConfig.title" placeholder="标题"
+            class="input input-bordered w-full " />
         </div>
-        <!-- 其他弹窗内容... -->
+        <div class="w-full">
+          <label class="label">
+            <span class="label-text">链接地址</span>
+          </label>
+          <input type="text" @change="handlChangeData" v-model="linkConfig.url" placeholder="链接地址"
+            class="input input-bordered w-full text-emerald" />
+        </div>
+        <!-- <iframe ref="iframe" :src="iframeUrl" frameborder="0"></iframe> -->
+        <div class="modal-action">
+          <form method="dialog">
+            <button @click="saveLink" class="btn btn-accent mr-4">保存</button>
+            <button class="btn">关闭</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="my_modal_4" class="modal">
+      <div class="modal-box  max-w-5xl bg-gray-900">
+        <div>
+          <table class="table w-full table-zebra">
+            <!-- head -->
+            <thead>
+              <tr class="bg-gray-900 text-emerald my-2">
+                <th align="center">操作</th>
+                <th align="left">标题和链接</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- row 1 -->
+              <tr v-for="(item, index) in urlList" :key="item.url" class="border-b border-gray-500">
+                <th class="flex w-30 mt-4">
+                  <button @click="dellink(index)" class="btn btn-outline btn-xs btn-secondary">删除</button>
+
+                  <form method="dialog">
+                    <button @click="handlUseLink(item)" class="btn btn-outline btn-xs btn-accent  ml-4"
+                      for="my_modal_4">使用</button>
+                  </form>
+                </th>
+                <td class="w-5/6 overflow-hidden">
+                  <a :href="item.url" target="_blank" className="btn btn-active btn-link text-blue lowercase text-left">{{
+                    item.url }}</a>
+                  <br />
+                  <span class="badge badge-ghost badge-lg text-red text-left text-lg p-2">{{ item.title }}</span>
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+
+            <button class="btn">关闭</button>
+          </form>
+        </div>
       </div>
     </dialog>
   </div>
