@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-09-19
- * @LastEditTime:2024-11-19 10:36:17
+ * @LastEditTime:2024-11-19 10:48:39
  * @LastEditors:xkloveme
  * @FileDesc:new page
  * @FilePath:/black-tool/src/components/Qrcode.vue
@@ -38,6 +38,7 @@
         </textarea>
         <button class="btn btn-primary mt-4">当前URL链接:</button>
         <qrcode-vue :value="qr" :size="360" level="H" class="my-4"/>
+        <a :href="qr" target="_blank" class="mt-4 text-blue-600">{{ decodeURIComponent(qr) }}</a>
       </div>
 
       <div class="divider divider-horizontal text-primary"> -> </div>
