@@ -14,13 +14,16 @@
     "url": {
       "开发者": "https://tool.lu/",
       "通用": "http://www.atoolbox.net/",
+      "UU在线": "https://uutool.cn/type/code/",
+      "devv": "https://devv.ai/zh",
       "iodraw": "https://www.iodraw.com/diagram/",
       "速写板": "https://www.suxieban.com/#",
       "hello图床": "https://www.helloimg.com/upload",
       "文件转换": "https://www.aconvert.com/cn/pdf/",
       "网速测试": "http://test.ustc.edu.cn/",
       "被墙测试": "https://www.kkce.com/wall/",
-      "vslite": "https://vslite.dev/"
+      "在线MD": "https://doocs.github.io/md/",
+      "在线HTML": "https://www.min2k.com/tools/min-webpage/"
     }
   },
   {
@@ -49,11 +52,17 @@
     }
   },
   {
-    "label": "小康黑科技",
-    "url": "https://www.jixiaokang.com/black-tool/#/qrcode/"
-  },
-  {
-    "label": "小康函数",
-    "url": "https://www.jixiaokang.com/jxk/"
+    "label": "小康合集",
+    "url": {
+      "小康黑科技": "https://www.jixiaokang.com/black-tool/#/qrcode/",
+      "小康文档": "http://doc.frp.jixiaokang.com/",
+      "小康博客": "http://www.jixiaokang.com/",
+      "小康笔记": "http://notes.frp.jixiaokang.com/",
+      "小康绘图": "http://draw.frp.jixiaokang.com/",
+      "小康阅读": "http://read.frp.jixiaokang.com/#/",
+      "小康在线文档": "http://xkloveme.jixiaokang.com/",
+      "小康影视": "http://tv.frp.jixiaokang.com/",
+      "小康函数": "https://www.jixiaokang.com/jxk/"
+    }
   }
 ]
