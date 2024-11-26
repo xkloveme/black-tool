@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-12-20
- * @LastEditTime:2024-11-19 10:21:18
+ * @LastEditTime:2024-11-21 17:49:10
  * @LastEditors:xkloveme
  * @FileDesc:new page
  * @FilePath:/black-tool/src/components/Header.vue
@@ -145,8 +145,17 @@ let menu = [{
 }, {
   name: "jsfuck",
   url: "/jsfuck"
-},{
-  name: "devtools",
-  url: "/devtools"
-}];
+  },{
+    name: "devtools",
+    url: "/devtools"
+  },
+  {
+    name: "ipv6",
+    url: "/ipv6"
+  },
+  {
+    name: "player",
+    url: "/player"
+  }
+  ];
 </script>

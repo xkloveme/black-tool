@@ -3,6 +3,8 @@ import Qrcode from '../components/Qrcode.vue'
 import Change from '../components/ChangeData.vue'
 import Devtools from '../components/Devtools.vue'
 import Jsfuck from '../components/Jsfuck.vue'
+import Player from '../views/player/index.vue'
+import Ipv6 from '../views/ipv6/index.vue'
 
 export const router = createRouter({
   history: createWebHashHistory(),
@@ -30,6 +32,16 @@ export const router = createRouter({
       path: '/devtools',
       name: 'devtools',
       component: Devtools,
+    },
+    {
+      path: '/player',
+      name: 'player',
+      component: Player,
+    },
+    {
+      path: '/ipv6',
+      name: 'ipv6',
+      component: Ipv6,
     },
   ],
 })
