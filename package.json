@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "gm-crypto": "^0.1.12",
+    "jxk": "^0.1.12",
     "hls.js": "^1.5.17",
     "jsfuck": "^0.4.0",
     "pinia": "2.1.0",

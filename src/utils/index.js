@@ -1,36 +1,28 @@
-import { SM4 } from 'gm-crypto'
+import { sm4 } from 'jxk'
 import {userStore} from '../store/user'
 // const store = userStore()
 // sm4对字符串加密
 export function encrypt(originalData) {
   const { SM4Key } = userStore()
-  if (originalData === '' || originalData === null || originalData === undefined)
-    return originalData
+  if (originalData === '' || originalData === null || originalData === undefined) {
+    return originalData;
+  }
   try {
-    return SM4.encrypt(originalData + '', SM4Key, {
-      inputEncoding: 'utf8',
-      outputEncoding: 'hex',
-    })
+    return SM4Key ? sm4.encrypt(originalData + '', SM4Key) : originalData;
   } catch (error) {
-    console.error('🐛: ~ encrypt ~ error:', originalData, error)
+    return originalData;
   }
 }
 
 // sm4对字符串解密
 export function decrypt(encryptedData) {
   const { SM4Key } = userStore()
+  if (encryptedData === '' || encryptedData === null || encryptedData === undefined) {
+    return encryptedData;
+  }
   try {
-    const decryptedData = SM4.decrypt(encryptedData, SM4Key, {
-      inputEncoding: 'hex',
-      outputEncoding: 'utf8',
-    })
-    console.log("===🐛=== ~ decrypt ~ decryptedData:", decryptedData);
-    try {
-      return JSON.stringify(JSON.parse(decryptedData), null, '\t')
-    } catch (error) {
-      return decryptedData
-    }
+    return SM4Key ? sm4.decrypt(encryptedData, SM4Key) : encryptedData;
   } catch (error) {
-    return encryptedData
+    return encryptedData;
   }
 }
