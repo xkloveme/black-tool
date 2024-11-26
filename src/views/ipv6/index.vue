@@ -1,6 +1,6 @@
 <template>
-  <div class="main p-4">
-    <div role="alert" class="alert shadow-lg bg-white p-4 rounded-lg">
+  <div class="main p-4 bg-base-100">
+    <div role="alert" class="alert shadow-lg bg-base-200 p-4 rounded-lg">
       <div class="flex items-center gap-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-8 w-8 text-primary" fill="none"
           viewBox="0 0 24 24">
@@ -9,25 +9,25 @@
         </svg>
         <div>
           <h1 class="font-bold text-primary text-xl">IPv6 网络测试工具</h1>
-          <p class="text-gray-600">检测您的网络 IPv6 连接状态和配置情况</p>
+          <p class="text-base-content/70">检测您的网络 IPv6 连接状态和配置情况</p>
         </div>
       </div>
     </div>
 
-    <div class="card bg-white shadow-lg rounded-lg mt-4 p-4">
+    <div class="card bg-base-200 shadow-lg rounded-lg mt-4 p-4">
       <div class="network-status">
-        <div class="stats shadow">
+        <div class="stats shadow bg-base-100">
           <div class="stat">
-            <div class="stat-title">网络类型</div>
+            <div class="stat-title text-base-content/70">网络类型</div>
             <div class="stat-value text-primary">{{ networkType }}</div>
           </div>
           <div class="stat">
-            <div class="stat-title">IPv6 得分</div>
+            <div class="stat-title text-base-content/70">IPv6 得分</div>
             <div class="stat-value text-secondary">{{ ipv6Score }}/10</div>
           </div>
         </div>
 
-        <div class="mt-4 space-y-2">
+        <div class="mt-4 space-y-2 text-base-content">
           <p>IPv4 地址: <strong>{{ ipv4Address || '正在检测...' }}</strong></p>
           <p>IPv6 地址: <strong>{{ ipv6Status }}</strong></p>
           <p>运营商（ISP）: <strong>{{ ispStatus }}</strong></p>
@@ -49,9 +49,9 @@
       </div>
     </div>
 
-    <div class="card bg-white shadow-lg rounded-lg mt-4 p-4">
+    <div class="card bg-base-200 shadow-lg rounded-lg mt-4 p-4">
       <div class="card-title flex justify-between items-center">
-        <h2 class="text-xl font-bold">测试项目</h2>
+        <h2 class="text-xl font-bold text-base-content">测试项目</h2>
         <button class="btn btn-ghost btn-sm" @click="toggleTestDetails">
           {{ showTestDetails ? '收起' : '展开' }}
         </button>
@@ -59,38 +59,38 @@
       
       <div v-show="showTestDetails" class="space-y-4 mt-4">
         <div v-for="(test, index) in testResults" :key="index" 
-          class="collapse collapse-arrow bg-base-200 hover:bg-base-300">
+          class="collapse collapse-arrow bg-base-300 hover:bg-base-300/80">
           <input type="checkbox" />
           <div class="collapse-title flex items-center justify-between">
-            <span class="font-medium">{{ test.name }}</span>
+            <span class="font-medium text-base-content">{{ test.name }}</span>
             <div class="flex items-center gap-2">
               <span :class="getStatusClass(test.status)">{{ test.status }}</span>
-              <span class="text-sm text-gray-500">({{ test.time }})</span>
+              <span class="text-sm text-base-content/60">({{ test.time }})</span>
             </div>
           </div>
-          <div class="collapse-content">
-            <p class="text-sm text-gray-600">{{ test.description }}</p>
+          <div class="collapse-content bg-base-200/50">
+            <p class="text-sm text-base-content/70">{{ test.description }}</p>
             <p v-if="test.detail" class="text-sm text-primary mt-2">{{ test.detail }}</p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="card bg-white shadow-lg rounded-lg mt-4 p-4">
+    <div class="card bg-base-200 shadow-lg rounded-lg mt-4 p-4">
       <div class="card-title flex justify-between items-center">
-        <h2 class="text-xl font-bold">常见问题</h2>
+        <h2 class="text-xl font-bold text-base-content">常见问题</h2>
         <button class="btn btn-ghost btn-sm" @click="toggleFAQ">
           {{ showFAQ ? '收起' : '展开' }}
         </button>
       </div>
       <div v-show="showFAQ" class="space-y-4 mt-4">
-        <div v-for="(faq, index) in faqs" :key="index" class="collapse collapse-arrow bg-base-200">
+        <div v-for="(faq, index) in faqs" :key="index" class="collapse collapse-arrow bg-base-300">
           <input type="checkbox" />
-          <div class="collapse-title text-xl font-medium">
+          <div class="collapse-title text-xl font-medium text-base-content">
             {{ faq.question }}
           </div>
-          <div class="collapse-content">
-            <p>{{ faq.answer }}</p>
+          <div class="collapse-content bg-base-200/50">
+            <p class="text-base-content/70">{{ faq.answer }}</p>
           </div>
         </div>
       </div>
@@ -443,7 +443,6 @@ onMounted(async () => {
   max-width: 800px;
   margin: 0 auto;
   min-height: 100vh;
-  background-color: var(--background-gray);
 }
 
 .network-status {
@@ -492,6 +491,5 @@ onMounted(async () => {
 
 .collapse-content {
   padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.5);
 }
 </style>

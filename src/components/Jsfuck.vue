@@ -64,24 +64,24 @@ const saveEncodedResult = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-white text-gray-800 p-4 font-sans">
-    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+  <div class="min-h-screen bg-base-100 text-base-content p-4 font-sans">
+    <div class="max-w-4xl mx-auto bg-base-200 rounded-lg shadow-md overflow-hidden">
       <div class="p-6">
         <h1 class="text-3xl font-bold text-center text-primary mb-4">JSFuck</h1>
-        <h2 class="text-xl text-center text-gray-600 mb-6">JS加密</h2>
+        <h2 class="text-xl text-center text-base-content/70 mb-6">JS加密</h2>
 
-        <div class="text-sm text-center mb-4">
+        <div class="text-sm text-center mb-4 text-base-content/80">
           前后端开发者常用工具
         </div>
 
         <div class="text-center mb-6">
-          <p class="text-sm font-semibold">
+          <p class="text-sm font-semibold text-base-content">
             JSFuck是一种怪异的JS代码加密方法，可将代码全都转换成"[]!()+"形式的字符。<br>
             严格的说，JSFuck加密更像是一种编码。
           </p>
         </div>
 
-        <div class="text-xs opacity-80 mb-6">
+        <div class="text-xs opacity-80 mb-6 text-base-content/70">
           <p>
             可加密前端Web浏览器、后端Node.JS等环境下的标准JS代码。<br>
             JSFuck会使代码体积极度膨胀，因此只适宜少量代码加密，建议代码量不超过<span class="text-base font-medium">512字节</span>。<br>
@@ -98,69 +98,70 @@ const saveEncodedResult = () => {
           <button @click="activeTab = 'input'"
             :class="['px-4 py-2 rounded-t-lg transition-colors', 
               activeTab === 'input' 
-                ? 'bg-primary text-white' 
-                : 'bg-gray-100 text-gray-600']">
+                ? 'bg-primary text-primary-content' 
+                : 'bg-base-300 text-base-content hover:bg-base-300/80']">
             JS源代码
           </button>
           <button @click="activeTab = 'output'"
             :class="['px-4 py-2 rounded-t-lg transition-colors', 
               activeTab === 'output' 
-                ? 'bg-primary text-white' 
-                : 'bg-gray-100 text-gray-600']">
+                ? 'bg-primary text-primary-content' 
+                : 'bg-base-300 text-base-content hover:bg-base-300/80']">
             JSFuck JS加密结果
           </button>
         </div>
 
-        <div class="bg-white border rounded-lg p-4">
+        <div class="bg-base-200 border border-base-300 rounded-lg p-4">
           <textarea v-if="activeTab === 'input'" 
             v-model="inputCode" 
             placeholder="请输入要加密的JS代码..."
-            class="w-full h-40 border rounded p-2 text-gray-700 focus:border-primary focus:ring-1 focus:ring-primary">
+            class="w-full h-40 textarea textarea-bordered bg-base-100 text-base-content focus:border-primary">
           </textarea>
           <div class="relative" v-else>
-            <textarea v-model="outputCode" placeholder="JSFuck加密结果将显示在这里..."
-              class="w-full h-40 bg-gray-800 text-gray-100 p-2 rounded resize-none focus:outline-none"
-              readonly></textarea>
-            <button @click="copyToClipboard(outputCode)"
-              class="absolute right-2 top-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+            <textarea v-model="outputCode" 
+              placeholder="JSFuck加密结果将显示在这里..."
+              class="w-full h-40 textarea textarea-bordered bg-base-300 text-base-content resize-none focus:outline-none"
+              readonly>
+            </textarea>
+            <button @click="copyToClipboard"
+              class="absolute right-2 top-2 btn btn-primary btn-sm">
               复制结果
             </button>
-          <button @click="runJs" class="absolute right-2 top-12 px-3 py-1 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition-colors">
-            运行代码
-          </button>
+            <button @click="runJs" 
+              class="absolute right-2 top-12 btn btn-warning btn-sm">
+              运行代码
+            </button>
           </div>
         </div>
 
         <div class="mt-4 flex flex-col space-y-2">
           <div class="flex items-center">
-            <input id="eval" v-model="canEval" type="checkbox" class="mr-2" />
-            <label for="eval" class="text-sm">可执行代码（如不启用，加密结果是编码后的字符串，而非可执行的代码。）</label>
+            <input id="eval" v-model="canEval" type="checkbox" class="checkbox checkbox-primary mr-2" />
+            <label for="eval" class="text-sm text-base-content">可执行代码（如不启用，加密结果是编码后的字符串，而非可执行的代码。）</label>
           </div>
           <div class="flex items-center">
-            <input id="scope" v-model="parentScope" type="checkbox" class="mr-2" />
-            <label for="scope" class="text-sm">
+            <input id="scope" v-model="parentScope" type="checkbox" class="checkbox checkbox-primary mr-2" />
+            <label for="scope" class="text-sm text-base-content">
               在父作用域中运行(例如"var a=1;"，不启用此选项时，变量a定义在"加密代码"局部作用域中，外部调用时会显示a是undefined，启用后变量a可以被"加密代码"外的其它代码访问。)
             </label>
           </div>
         </div>
 
         <div class="mt-6 flex justify-center space-x-4">
-          <button @click="cleanCode" class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors">
+          <button @click="cleanCode" class="btn btn-error">
             清空JS源代码
           </button>
-          <button @click="encodeJSFuck"
-            class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+          <button @click="encodeJSFuck" class="btn btn-primary">
             JSFuck加密
           </button>
-          <button @click="saveEncodedResult"
-            class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+          <button @click="saveEncodedResult" class="btn btn-success">
             保存JS加密结果
           </button>
         </div>
 
-        <h2 class="text-center my-4">Basics</h2>
+        <h2 class="text-center my-4 text-base-content">Basics</h2>
 
-        <ul class="pre">
+        <ul class="pre text-base-content/80">
           <li>false => ![]</li>
           <li>true => !![]</li>
           <li>undefined => [][[]]</li>
@@ -174,7 +175,6 @@ const saveEncodedResult = () => {
           <li>String => []+[]</li>
           <li>Boolean => ![]</li>
           <li>Function => []["filter"]</li>
-
           <li>eval => []["filter"]["constructor"]( CODE )()</li>
           <li>window => []["filter"]["constructor"]("return this")()</li>
         </ul>
@@ -184,5 +184,15 @@ const saveEncodedResult = () => {
 </template>
 
 <style scoped>
-/* Add any component-specific styles here if needed */
+.pre {
+  font-family: monospace;
+  white-space: pre-wrap;
+  padding: 1rem;
+  background-color: var(--base-300);
+  border-radius: 0.5rem;
+}
+
+.pre li {
+  margin-bottom: 0.5rem;
+}
 </style>

@@ -25,6 +25,14 @@
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
+  
+  /* 主题相关的全局样式 */
+  --transition-base: all 0.3s ease;
+  
+  /* 添加主题相关变量 */
+  --header-bg: #ffffff;
+  --header-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --primary-light: rgba(24, 144, 255, 0.1);
 }
 
 body {
@@ -34,6 +42,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 链接样式 */
@@ -73,4 +82,80 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--spacing-lg);
-} 
+}
+
+/* 明亮主题 */
+.theme-light {
+  --background-color: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+/* 暗黑主题 */
+.theme-dark {
+  --background-color: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
+  --box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+}
+
+/* 其他主题... */
+
+/* 明亮主题 */
+[data-theme="light"] {
+  --header-bg: #ffffff;
+  --header-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --background-color: #ffffff;
+  --background-gray: #f5f7fa;
+  --text-primary: #1f2937;
+  --text-secondary: #64748b;
+  --border-color: #e5e7eb;
+}
+
+/* 暗黑主题 */
+[data-theme="dark"] {
+  --header-bg: #1a1b1e;
+  --header-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --background-color: #121212;
+  --background-gray: #18181b;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --border-color: #2d2d2d;
+  
+  /* 组件背景色 */
+  --component-bg: #1d1d20;
+  --component-hover: #2d2d30;
+  --input-bg: #2d2d30;
+  --modal-bg: #1d1d20;
+  
+  /* 文字颜色 */
+  --text-base: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-inverted: #000000;
+  
+  /* 卡片和输入框 */
+  --card-bg: #1d1d20;
+  --input-border: #3f3f46;
+  --input-placeholder: #71717a;
+}
+
+/* 其他主题... */
+[data-theme="cupcake"] {
+  --header-bg: #faf7f5;
+  --background-color: #faf7f5;
+  --background-gray: #f3f0ee;
+}
+
+[data-theme="cyberpunk"] {
+  --header-bg: #000000;
+  --background-color: #000000;
+  --background-gray: #0a0a0a;
+}
+
+.header-container,
+.nav-links a {
+  transition: all 0.3s ease;
+}

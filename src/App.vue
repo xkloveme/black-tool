@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="min-h-screen flex flex-col">
+  <div id="app" :class="['min-h-screen flex flex-col', `theme-${currentTheme}`]">
     <Header/>
     <main class="flex-grow p-4">
       <router-view></router-view>
@@ -9,8 +9,29 @@
 </template>
 
 <script setup>
+import { ref, onMounted, watch } from 'vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+
+const currentTheme = ref('')
+
+onMounted(() => {
+  currentTheme.value = localStorage.getItem('theme') || 'light'
+  
+  // 监听主题变化
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'data-theme') {
+        currentTheme.value = document.documentElement.getAttribute('data-theme')
+      }
+    })
+  })
+  
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+  })
+})
 </script>
 
 <style>

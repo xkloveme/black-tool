@@ -1,19 +1,19 @@
 <template>
-  <div id="player-container">
+  <div id="player-container" class="bg-base-100 p-4">
     <div class="input-section">
       <div class="input-group">
         <input 
           v-model="videoUrl" 
-          class="url-input"
+          class="input input-bordered w-full bg-base-100 text-base-content"
           placeholder="输入视频直链(支持MP4/M3U8/HLS/DASH)或选择直播源"
           @keyup.enter="handleUrlInput"
         >
         <select 
-          class="source-select"
+          class="select select-bordered bg-base-100 text-base-content"
           v-model="selectedSource"
           @change="handleSourceChange"
         >
-          <option value="">选择直播源</option>
+          <option value="" disabled selected>选择直播源</option>
           <option 
             v-for="source in quickSources" 
             :key="source.url"
@@ -24,29 +24,28 @@
         </select>
       </div>
       <button 
-        class="load-btn" 
+        class="btn btn-primary" 
         @click="handleUrlInput" 
         :disabled="loading || !videoUrl.trim()"
       >
-        <span class="loading-spinner" v-if="loading"></span>
+        <span class="loading loading-spinner" v-if="loading"></span>
         {{ loading ? '加载中...' : '播放' }}
       </button>
     </div>
     
-    <div v-if="videoUrl.trim() || playlist.length" class="main-content">
+    <div v-if="videoUrl.trim() || playlist.length" class="main-content bg-base-300">
       <div class="video-container">
-        <div v-if="!hasVideo" class="default-cover">
+        <div v-if="!hasVideo" class="default-cover bg-base-300">
           <div class="cover-text">
-            <h3>欢迎使用在线播放器</h3>
-            <p>请输入播放地址开始观看</p>
+            <h3 class="text-base-content">欢迎使用在线播放器</h3>
+            <p class="text-base-content/70">请输入播放地址开始观看</p>
           </div>
         </div>
        
-        
         <div ref="dplayerRef" class="dplayer" :class="{ 'hidden': !hasVideo }"></div>
         
         <transition name="fade">
-          <div v-if="showChannelInfo" class="channel-overlay">
+          <div v-if="showChannelInfo" class="channel-overlay bg-base-300/90 backdrop-blur">
             <div class="channel-info-content">
               <div class="channel-header">
                 <img v-if="currentChannel?.tvgLogo" 
@@ -59,7 +58,7 @@
                     <span class="dot"></span>
                     正在播放
                   </div>
-                  <div class="channel-name">{{ currentChannel?.name || getVideoFileName(videoUrl) }}</div>
+                  <div class="channel-name text-base-content">{{ currentChannel?.name || getVideoFileName(videoUrl) }}</div>
                 </div>
               </div>
             </div>
@@ -67,7 +66,7 @@
         </transition>
 
         <div class="player-controls">
-          <button class="control-btn" @click="toggleSidebar">
+          <button class="control-btn bg-base-300/60 hover:bg-base-300/80" @click="toggleSidebar">
             <svg viewBox="0 0 24 24" width="24" height="24">
               <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/>
             </svg>
@@ -76,10 +75,10 @@
         </div>
 
         <transition name="fade">
-          <div v-show="!sidebarCollapsed" class="floating-primary-sidebar">
-            <div class="sidebar-header">
-              <h3>频道分类</h3>
-              <button class="close-btn" @click="toggleSidebar">
+          <div v-show="!sidebarCollapsed" class="floating-primary-sidebar bg-base-300/90 backdrop-blur">
+            <div class="sidebar-header border-base-content/10">
+              <h3 class="text-base-content">频道分类</h3>
+              <button class="close-btn hover:bg-base-content/10" @click="toggleSidebar">
                 <svg viewBox="0 0 24 24" width="16" height="16">
                   <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
                 </svg>
@@ -89,12 +88,12 @@
             <div class="group-list">
               <div v-for="(group, groupName) in sortedGroupedPlaylist" 
                    :key="groupName" 
-                   class="group-item"
-                   :class="{ 'active': activeGroup === groupName }"
+                   class="group-item hover:bg-base-content/5"
+                   :class="{ 'active bg-primary/10': activeGroup === groupName }"
                    @click="selectGroup(groupName)"
               >
-                <span class="group-name">{{ groupName || '未分组' }}</span>
-                <span class="group-count">{{ group.length }} 个频道</span>
+                <span class="group-name text-base-content">{{ groupName || '未分组' }}</span>
+                <span class="group-count bg-base-content/10 text-base-content/60">{{ group.length }} 个频道</span>
               </div>
             </div>
           </div>
@@ -102,10 +101,10 @@
       </div>
 
       <transition name="slide-right">
-        <div v-if="activeGroup" class="secondary-sidebar">
-          <div class="sidebar-header">
-            <h3>{{ activeGroup }}</h3>
-            <button class="close-btn" @click="closeSecondary">
+        <div v-if="activeGroup" class="secondary-sidebar bg-base-300/90 backdrop-blur">
+          <div class="sidebar-header border-base-content/10">
+            <h3 class="text-base-content">{{ activeGroup }}</h3>
+            <button class="close-btn hover:bg-base-content/10" @click="closeSecondary">
               <svg viewBox="0 0 24 24" width="16" height="16">
                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
               </svg>
@@ -115,13 +114,17 @@
           <ul class="channel-list">
             <li v-for="(channel, index) in activeGroupChannels" 
                 :key="channel.url"
-                :class="{ active: currentIndex === getGlobalIndex(activeGroup, index) }"
+                :class="{ 
+                  'active': currentIndex === getGlobalIndex(activeGroup, index),
+                  'hover:bg-base-content/5': true,
+                  'border-base-content/5': true
+                }"
                 @click="playVideo(channel, getGlobalIndex(activeGroup, index))"
             >
               <div class="channel-info">
                 <div class="channel-main">
-                  <span class="channel-number">{{ getGlobalIndex(activeGroup, index) + 1 }}. </span>
-                  <span class="channel-name">{{ getVideoName(channel) }}</span>
+                  <span class="channel-number text-base-content/50">{{ getGlobalIndex(activeGroup, index) + 1 }}. </span>
+                  <span class="channel-name text-base-content">{{ getVideoName(channel) }}</span>
                 </div>
                 <div class="channel-meta">
                   <span v-if="isIPv6(channel.url)" class="meta-tag ipv6-tag">IPv6</span>
@@ -420,7 +423,7 @@ const playVideo = async (channel, index) => {
 
   } catch (err) {
     console.error('播放器初始化失败:', err);
-    error.value = '播放器初始化失败，请刷新页面重试';
+    error.value = '播放器初始化失败，请新页面重试';
     showMessage('播放器初始化失败', 'error');
     hasVideo.value = false;
   }
@@ -567,54 +570,40 @@ const handleSourceChange = () => {
 <style scoped>
 #player-container {
   padding: 20px;
-  background: #f5f7fa;
   min-height: calc(100vh - 60px);
 }
 
-.player-wrapper {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
+.default-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--base-300);
 }
 
 .main-content {
   position: relative;
   height: calc(100vh - 180px);
-  background: #000;
+  background: var(--base-300);
   border-radius: 12px;
   overflow: hidden;
-}
-
-.primary-sidebar {
-  width: 200px;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  color: white;
-  z-index: 2;
-}
-
-.secondary-sidebar {
-  width: 360px;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(20px);
-  color: white;
-  overflow-y: auto;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .video-container {
   flex: 1;
   position: relative;
+  background: var(--base-300);
 }
 
 .dplayer {
   width: 100%;
   height: calc(100vh - 140px);
-  background: #000;
+  background: var(--base-300);
 }
 
 .controls-panel {
@@ -784,19 +773,13 @@ const handleSourceChange = () => {
   gap: 10px;
 }
 
-.url-input {
-  flex: 1;
-  padding: 10px 16px;
-  border: 1px solid #dcdfe6;
-  border-radius: 6px;
-  font-size: 14px;
+.url-input, .source-select {
+  @apply bg-base-100 border-base-300 text-base-content;
   transition: all 0.3s;
 }
 
-.url-input:focus {
-  border-color: #409eff;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
+.url-input:focus, .source-select:focus {
+  @apply border-primary ring-1 ring-primary;
 }
 
 .source-select {
@@ -1022,15 +1005,14 @@ const handleSourceChange = () => {
 
 /* 频道信息浮层 */
 .channel-overlay {
+  @apply bg-base-300/90 backdrop-blur;
+  border: 1px solid var(--base-content/10);
   position: absolute;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(12px);
   padding: 12px 20px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .channel-header {
@@ -1365,8 +1347,7 @@ const handleSourceChange = () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #1a1a1a;
-  color: white;
+  background: var(--base-300);
 }
 
 .cover-image {
@@ -1458,4 +1439,29 @@ const handleSourceChange = () => {
   border: 1px solid rgba(64, 158, 255, 0.2);
   color: white !important;
 }
+
+/* 保持原有样式，只修改颜色相关的部分 */
+.url-input, .source-select {
+  @apply border rounded-lg transition-all duration-300;
+}
+
+.url-input:focus, .source-select:focus {
+  @apply border-primary outline-none ring-1 ring-primary;
+}
+
+/* 修改滚动条样式 */
+.playlist-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.playlist-container::-webkit-scrollbar-thumb {
+  @apply bg-base-content/20 rounded;
+}
+
+.playlist-container::-webkit-scrollbar-track {
+  @apply bg-base-300;
+}
+
+/* 其他样式保持不变 */
+/* ... */
 </style>
