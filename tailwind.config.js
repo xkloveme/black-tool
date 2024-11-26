@@ -32,6 +32,24 @@ export default {
         },
       },
       {
+        corporate: {
+          ...require("daisyui/src/theming/themes")["corporate"],
+          "primary": "#4b6bfb",
+          "base-100": "#f8fafc",
+          "base-200": "#f1f5f9",
+          "base-300": "#e2e8f0",
+        },
+      },
+      {
+        bumblebee: {
+          ...require("daisyui/src/theming/themes")["bumblebee"],
+          "primary": "#e0a82e",
+          "base-100": "#fef9c3",
+          "base-200": "#fef08a",
+          "base-300": "#fde047",
+        },
+      },
+      {
         cupcake: {
           ...require("daisyui/src/theming/themes")["cupcake"],
           "primary": "#1677ff",
