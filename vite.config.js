@@ -1,21 +1,21 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import unocss from 'unocss/vite'
-import { presetUno } from 'unocss'
-import { presetDaisy } from 'unocss-preset-daisy'
-// https://vitejs.dev/config/
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
+
 export default defineConfig({
   base: './',
-  plugins: [vue(), unocss({
-    presets: [presetUno(), presetDaisy()],
-  }),],
+  plugins: [vue()],
   server: {
     port: 5173,
     host: true,
   },
-  // build:{
-  //   rollupOptions:{
-  //     external: ['pinia']
-  //   }
-  // }
+  css: {
+    postcss: {
+      plugins: [
+        tailwindcss,
+        autoprefixer,
+      ],
+    },
+  },
 })
