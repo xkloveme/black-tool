@@ -15,7 +15,7 @@
     "url": {
       "开发者": "https://tool.lu/",
       "通用": "http://www.atoolbox.net/",
-      "IFrame 检查工具": "https://iframecheck.online/zh/",
+      "IFrame 检查工具": "https://iframegenerator.top/",
       "在线 note": "https://hypernotepad.com/",
       "UU在线": "https://uutool.cn/type/code/",
       "devv": "https://devv.ai/zh",
@@ -26,7 +26,9 @@
       "网速测试": "http://test.ustc.edu.cn/",
       "被墙测试": "https://www.kkce.com/wall/",
       "在线MD": "https://doocs.github.io/md/",
-      "在线HTML": "https://www.min2k.com/tools/min-webpage/"
+      "在线HTML": "https://www.min2k.com/tools/min-webpage/",
+      "高德经纬度转换": "https://www.piliang.tech/geocoding-amap",
+      "百度经纬度转换": "https://maplocation.sjfkai.com/"
     }
   },
   {
@@ -48,10 +50,12 @@
     }
   },
   {
-    "label": "经纬度转换",
+    "label": "华通云",
     "url": {
-      "高德": "https://www.piliang.tech/geocoding-amap",
-      "百度": "https://maplocation.sjfkai.com/"
+      "gitlab": "http://30.207.88.65:8090/dashboard/activity",
+      "jenkins": "http://30.207.88.48:8888/",
+      "禅道": "http://30.207.88.6/zentao/my-bug.html",
+      "发布文档": "http://30.207.81.16:9010/index.action#all-updates"
     }
   },
   {
