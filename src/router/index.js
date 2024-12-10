@@ -5,7 +5,7 @@ import Devtools from '../components/Devtools.vue'
 import Jsfuck from '../components/Jsfuck.vue'
 import Player from '../views/player/index.vue'
 import Ipv6 from '../views/ipv6/index.vue'
-
+import Github from '../views/github/index.vue'
 export const router = createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -42,6 +42,11 @@ export const router = createRouter({
       path: '/ipv6',
       name: 'ipv6',
       component: Ipv6,
+    },
+    {
+      path: '/github',
+      name: 'github',
+      component: Github,
     },
   ],
 })

@@ -1,6 +1,6 @@
 <!--
  * @Date: 2023-12-20
- * @LastEditTime:2024-11-26 15:10:23
+ * @LastEditTime:2024-12-10 17:35:43
  * @LastEditors:xkloveme
  * @FileDesc:new page
  * @FilePath:/black-tool/src/components/Header.vue
@@ -176,6 +176,10 @@ let menu = [{
   },{
     name: "devtools",
     url: "/devtools"
+  },
+  {
+    name: "github 加速",
+    url: "/github"
   },
   {
     name: "ipv6",

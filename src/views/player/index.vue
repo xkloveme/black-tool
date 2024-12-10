@@ -2,6 +2,14 @@
   <div id="player-container" class="bg-base-100 p-4">
     <div class="input-section">
       <div class="input-group">
+        <div class="player-controls" v-if="videoUrl">
+          <button class="btn btn-primary control-btn bg-base-300/60 hover:bg-base-300/80" @click="toggleSidebar">
+            <svg viewBox="0 0 24 24" width="24" height="24" v-if="sidebarCollapsed">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/>
+            </svg>
+              <svg v-else xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24"><path fill="currentColor" d="M896 192H128v128h768zm0 256H384v128h512zm0 256H128v128h768zM320 384L128 512l192 128z"/></svg>
+          </button>
+        </div>
         <input 
           v-model="videoUrl" 
           class="input input-bordered w-full bg-base-100 text-base-content"
@@ -65,14 +73,7 @@
           </div>
         </transition>
 
-        <div class="player-controls">
-          <button class="control-btn bg-base-300/60 hover:bg-base-300/80" @click="toggleSidebar">
-            <svg viewBox="0 0 24 24" width="24" height="24">
-              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/>
-            </svg>
-            {{ sidebarCollapsed ? '显示频道' : '隐藏频道' }}
-          </button>
-        </div>
+      
 
         <transition name="fade">
           <div v-show="!sidebarCollapsed" class="floating-primary-sidebar bg-base-300/90 backdrop-blur">
@@ -121,7 +122,7 @@
                 }"
                 @click="playVideo(channel, getGlobalIndex(activeGroup, index))"
             >
-              <div class="channel-info">
+              <div class="channel-info cursor-pointer">
                 <div class="channel-main">
                   <span class="channel-number text-base-content/50">{{ getGlobalIndex(activeGroup, index) + 1 }}. </span>
                   <span class="channel-name text-base-content">{{ getVideoName(channel) }}</span>
@@ -264,6 +265,7 @@ const playDirectVideo = async (url) => {
           }
         }
       },
+      contextmenu:[],
       autoplay: true,
       live: videoType === 'hls',
       preload: 'auto',
@@ -514,9 +516,17 @@ const closeSecondary = () => {
   activeGroup.value = null;
 };
 
+// 修改快捷直播源配置
+const quickSources = ref([]);
 // 生命周期钩子
 onMounted(() => {
   // 不再自动加载 M3U
+  fetch('tv.json')
+    .then(response => response.text())
+    .then(text => {
+      console.log("===🐛=== ~ onMounted ~ text:", text);
+      quickSources.value = JSON.parse(text);
+    });
 });
 
 onUnmounted(() => {
@@ -542,21 +552,7 @@ const getGroupIndex = (groupName) => {
   return Object.keys(sortedGroupedPlaylist.value).indexOf(groupName) + 1;
 };
 
-// 修改快捷直播源配置
-const quickSources = [
-  {
-    name: 'IPTV直播源',
-    url: 'https://live.kilvn.com/iptv.m3u'
-  },
-  {
-    name: 'IPTV4直播源',
-    url: 'https://live.zbds.top/tv/iptv4.m3u'
-  },
-  {
-    name: 'IPV6直播源',
-    url: 'https://live.zbds.top/tv/iptv6.m3u'
-  }
-];
+
 
 // 修改快捷源选择方法
 const handleSourceChange = () => {
@@ -1239,12 +1235,6 @@ const handleSourceChange = () => {
   }
 }
 
-.player-controls {
-  position: absolute;
-  bottom: 60px;
-  right: 20px;
-  z-index: 10;
-}
 
 .control-btn {
   display: flex;
