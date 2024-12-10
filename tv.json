@@ -1,0 +1,18 @@
+[
+  {
+    "name": "直播源",
+    "url": "https://ghp.miaostay.com/https://raw.githubusercontent.com/Guovin/iptv-api/refs/heads/gd/output/result.m3u"
+  },
+  {
+    "name": "IPTV直播源",
+    "url": "https://live.kilvn.com/iptv.m3u"
+  },
+  {
+    "name": "IPTV4直播源", 
+    "url": "https://live.zbds.top/tv/iptv4.m3u"
+  },
+  {
+    "name": "IPV6直播源",
+    "url": "https://live.zbds.top/tv/iptv6.m3u"
+  }
+]
